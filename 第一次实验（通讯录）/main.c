@@ -4,9 +4,8 @@ int main() {
     contacts *head = create_phone_list();
     printf("通讯录已创建！\n");
     while(1) {
-        printf("按任意数字键继续");
-        int nums;//输入任意数字继续
-        scanf("%d",&nums);
+        char *p;//按任意键继续
+        scanf("%s",p);
         printf("----------------------------------------\n"
                "输入序号进入选项:\n"
                "0.退出通讯录\n"
@@ -17,13 +16,12 @@ int main() {
                "5.输出某位成员的通讯记录\n"
                "6.删除某位成员的记录\n"
                "--------------------------------------------\n");
-        int num = 0;
+        int num = 0;//选项
         scanf("%d",&num);
-        if (num == 0){
-            break;
-        }
         char name[20];
         switch (num){
+            case 0:
+                return 0;
             case 1:
                 head = create_phone_list();
                 break;
@@ -49,8 +47,9 @@ int main() {
                 scanf("%s",name);
                 head=delete_user(head,name);
                 break;
+            default:
+                printf("输入有误，请重新输入！");
         }
-        printf("\n");
+        printf("按任意键继续\n");
     }
-    return 0;
 }
